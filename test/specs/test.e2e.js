@@ -1,4 +1,4 @@
-import { expect } from '@wdio/globals'
+import { browser, expect } from '@wdio/globals'
 import LoginPage from '../pageobjects/login.page.js'
 import SecurePage from '../pageobjects/secure.page.js'
 import Products from '../pageobjects/products.page.js'
@@ -7,6 +7,7 @@ describe('My Login application', () => {
     it('should login with standard', async () => {
         await LoginPage.open()
         await LoginPage.login(LoginPage.credentials.users[0], LoginPage.credentials.password)
+        await browser.saveScreenshot('./screenshots/fileName.png')
         await expect(LoginPage.headerName).toHaveText('Products')
     }) 
     it('should login with visual_user', async () => {
